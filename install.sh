@@ -1,16 +1,30 @@
-read -p 'Enter Hostname: ' hostvar
-read -p 'Enter your Username: ' uservar
-read -p 'Enter user password: ' userpass
-read -p 'Enter root password: ' root_password
-read -p 'Enter root partition size: ' rootsize
-read -p 'Enter swap size (ideally half of RAM size): ' swapsize
+bootstrapper_dialog() {
+    DIALOG_RESULT=$(dialog --clear --stdout --backtitle "Arch bootstrapper" --no-shadow "$@" 2>/dev/null)
+}
+
+bootstrapper_dialog --title "Welcome" --msgbox "Welcome to Arch Linux bootstrapper.\n" 6 60
+
+bootstrapper_dialog --title "Hostname" --inputbox "Please enter a name for this host.\n" 8 60
+hostvar="$DIALOG_RESULT"
+bootstrapper_dialog --title "Username" --inputbox "Enter your Username.\n" 8 60
+uservar="$DIALOG_RESULT"
+bootstrapper_dialog --title "User Password" --inputbox "Please enter a password for the user.\n" 8 60
+userpass="$DIALOG_RESULT"
+bootstrapper_dialog --title "Root Password" --inputbox "Please enter a password for Root.\n" 8 60
+root_password="$DIALOG_RESULT"
+bootstrapper_dialog --title "Partitioning" --inputbox "Enter the partition size for root.\n" 8 60
+rootsize="$DIALOG_RESULT"
+bootstrapper_dialog --title "Partitioning" --inputbox "Please enter the swap size (ideally half of RAM size).\n" 8 60
+swapsize="$DIALOG_RESULT"
+lsblk
+bootstrapper_dialog --title "Partitioning" --inputbox "Enter device to install Arch on.\n" 8 60
+sdavar="$DIALOG_RESULT"
 timedatectl set-ntp true
 dhcpcd
 echo "nameserver 8.8.8.8 > /etc/resolv.conf"
 echo "nameserver 8.8.4.4 >> /etc/resolv.conf"
 #iwctl --passphrase passphrase station device connect SSID
-lsblk
-read -p 'Enter device to install Arch on: ' sdavar
+
 #disk partitioning
 sgdisk -oG /dev/sda
 sgdisk -n 0:0:+512MiB -t 0:ef00 -c 0:"EFI" /dev/$sdavar
@@ -35,7 +49,6 @@ genfstab -p /mnt >> /mnt/etc/fstab
 arch-chroot /mnt /bin/bash <<EOF
 pacman-key --init
 pacman-key --populate archlinux
-
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 echo en_US.UTF-8 > /etc/locale.conf
 locale-gen
@@ -45,13 +58,10 @@ hwclock --systohc --utc
 echo $hostvar > /etc/hostname
 mkinitcpio -p linux
 pacman -S alsa alsa-utils wireless_tools wpa_supplicant dialog networkmanager dhcpcd --noconfirm
-
-#boot manager
 pacman -S grub efibootmgr --noconfirm
 grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 echo "root:${root_password}" | chpasswd
-
 pacman -S xorg-server xf86-video-vesa sudo --noconfirm
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 useradd -m -g users -G wheel $uservar
@@ -61,4 +71,3 @@ EOF
 
 umount -R /mnt
 reboot
-
