@@ -23,6 +23,8 @@ yay -S google-chrome --noconfirm
 yay -S authy --noconfirm
 yay -S vlc --noconfirm
 yay -S appimagelauncher --noconfirm
+yay -S notion-app --noconfirm
+yay -S notion-enhancer --noconfirm
 sudo pacman -S net-tools htop ntfs-3g vlc python-pip --noconfirm
 wget https://raw.githubusercontent.com/Jigsaw-Code/outline-releases/master/client/stable/Outline-Client.AppImage -O ~/apps/
 
