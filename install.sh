@@ -21,7 +21,7 @@ swapsize="$DIALOG_RESULT"
 lsblk
 bootstrapper_dialog --title "Partitioning" --inputbox "Enter device to install Arch on.\n" 8 60
 sdavar="$DIALOG_RESULT"
-timedatectl set-ntp true
+timedatectl set-ntp truewon't be doing my home folder backups next time, just the root f
 dhcpcd
 echo "nameserver 8.8.8.8 > /etc/resolv.conf"
 echo "nameserver 8.8.4.4 >> /etc/resolv.conf"
@@ -60,6 +60,7 @@ hwclock --systohc --utc
 echo $hostvar > /etc/hostname
 mkinitcpio -p linux
 pacman -S alsa alsa-utils wireless_tools wpa_supplicant dialog networkmanager dhcpcd --noconfirm
+systemctl enable dhcpcd
 pacman -S grub efibootmgr --noconfirm
 grub-install /dev/nvme0n1
 grub-mkconfig -o /boot/grub/grub.cfg
