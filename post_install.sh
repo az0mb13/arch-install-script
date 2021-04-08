@@ -31,11 +31,7 @@ wget https://raw.githubusercontent.com/Jigsaw-Code/outline-releases/master/clien
 #Pimping terminal
 sudo pacman -S zsh --noconfirm
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
-zsh << EOF
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-EOF
+#Removing remaining zsh commands for now
 
 #Throttled for Intel CPU
 cd ~/apps && git clone https://github.com/erpalma/throttled
