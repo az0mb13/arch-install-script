@@ -22,4 +22,9 @@ yay -S slack-desktop --noconfirm
 yay -S google-chrome --noconfirm
 yay -S authy --noconfirm
 yay -S vlc --noconfirm
-sudo pacman -S net-tools htop ntfs-3g vlc --noconfirm
+sudo pacman -S net-tools htop ntfs-3g vlc python-pip --noconfirm
+
+#Throttled for Intel CPU
+cd ~/apps && git clone https://github.com/erpalma/throttled
+cd ~/apps/throttled 
+sudo ./install.sh
