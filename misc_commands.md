@@ -20,3 +20,12 @@ Paste this in /etc/environment. Can change the value to `gasp` as well
 
 _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 ```
+---
+
+## Fix for CPU Throttling in Intel CPUs
+
+```
+Clone and ./install.sh
+
+https://github.com/erpalma/throttled
+```
