@@ -29,3 +29,10 @@ Clone and ./install.sh
 
 https://github.com/erpalma/throttled
 ```
+---
+
+## Fixing Sound in newer laptop models
+
+```
+Install sof-firmware and alsa-ucm-conf
+```
