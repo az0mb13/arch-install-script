@@ -36,3 +36,18 @@ https://github.com/erpalma/throttled
 ```
 Install sof-firmware and alsa-ucm-conf
 ```
+
+## Fixing Bluetooth headphones
+
+```
+Install these - 
+sudo pacman -S bluez
+sudo pacman -S bluez-utils
+sudo pacman -S blueman (Try without this next time in KDE)
+sudo pacman -S pulseaudio-bluetooth
+
+Then restart pulseaudio and bluetooth with 
+pulseaudio -k
+pulseaudio --start
+sudo systemctl restart bluetooth
+```
