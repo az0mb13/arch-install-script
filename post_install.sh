@@ -26,7 +26,8 @@ yay -S appimagelauncher --noconfirm
 yay -S notion-app --noconfirm
 yay -S notion-enhancer --noconfirm
 yay -S ocs-url --noconfirm
-sudo pacman -S net-tools htop ntfs-3g vlc python-pip flameshot jre-openjdk jdk-openjdk openvpn --noconfirm
+yay -S cpupower --noconfirm
+sudo pacman -S net-tools htop ntfs-3g vlc python-pip flameshot jre-openjdk jdk-openjdk openvpn code cpupower --noconfirm
 wget https://raw.githubusercontent.com/Jigsaw-Code/outline-releases/master/client/stable/Outline-Client.AppImage -O ~/apps/
 
 #Pimping terminal
