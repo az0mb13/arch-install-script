@@ -62,7 +62,7 @@ mkinitcpio -p linux
 pacman -S alsa alsa-utils wireless_tools wpa_supplicant dialog networkmanager dhcpcd --noconfirm
 systemctl enable dhcpcd
 pacman -S grub efibootmgr --noconfirm
-grub-install /dev/nvme0n1
+grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 echo "root:${root_password}" | chpasswd
 pacman -S xorg-server xf86-video-vesa sudo --noconfirm
