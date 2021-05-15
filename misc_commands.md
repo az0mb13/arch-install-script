@@ -51,3 +51,31 @@ pulseaudio -k
 pulseaudio --start
 sudo systemctl restart bluetooth
 ```
+
+## Starting ssh-agent automatically on system boot
+
+Create a systemd user service, by putting the following to `~/.config/systemd/user/ssh-agent.service`:
+
+```
+[Unit]
+Description=SSH key agent
+
+[Service]
+Type=simple
+Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
+ExecStart=/usr/bin/ssh-agent -D -a $SSH_AUTH_SOCK
+
+[Install]
+WantedBy=default.target
+```
+
+Setup shell to have an environment variable for the socket (.bash_profile, .zshrc, ...):
+
+`export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"`
+
+Enable the service, so it'll be started automatically on login, and start it:
+
+```
+systemctl --user enable ssh-agent
+systemctl --user start ssh-agent
+```
