@@ -79,3 +79,10 @@ Enable the service, so it'll be started automatically on login, and start it:
 systemctl --user enable ssh-agent
 systemctl --user start ssh-agent
 ```
+
+### If META key stos opening Application launcher
+
+```
+kwriteconfig5 --file ~/.config/kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.plasmashell,/PlasmaShell,org.kde.PlasmaShell,activateLauncherMenu"
+qdbus org.kde.KWin /KWin reconfigure
+```
