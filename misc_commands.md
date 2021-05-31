@@ -82,7 +82,7 @@ systemctl --user start ssh-agent
 
 ---
 
-### If META key stos opening Application launcher
+### If META key stos opening Application launcher in KDE
 
 ```
 kwriteconfig5 --file ~/.config/kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.plasmashell,/PlasmaShell,org.kde.PlasmaShell,activateLauncherMenu"
