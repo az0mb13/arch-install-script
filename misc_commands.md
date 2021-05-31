@@ -80,6 +80,8 @@ systemctl --user enable ssh-agent
 systemctl --user start ssh-agent
 ```
 
+---
+
 ### If META key stos opening Application launcher
 
 ```
