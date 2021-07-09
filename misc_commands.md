@@ -82,9 +82,17 @@ systemctl --user start ssh-agent
 
 ---
 
-### If META key stos opening Application launcher in KDE
+### If META key stops opening Application launcher in KDE
 
 ```
 kwriteconfig5 --file ~/.config/kwinrc --group ModifierOnlyShortcuts --key Meta "org.kde.plasmashell,/PlasmaShell,org.kde.PlasmaShell,activateLauncherMenu"
 qdbus org.kde.KWin /KWin reconfigure
+```
+
+---
+
+### When VMWare can't open /dev/vmmon. No such file or directory.
+
+```
+sudo vmware-modconfig --console --install-all
 ```
