@@ -96,3 +96,12 @@ qdbus org.kde.KWin /KWin reconfigure
 ```
 sudo vmware-modconfig --console --install-all
 ```
+
+---
+
+### Unalias gau permanently to use the tool
+
+```
+vim ~/.oh-my-zsh/plugins/git/git.plugin.zsh
+# alias gau='git add --update'
+```
