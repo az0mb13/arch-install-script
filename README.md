@@ -1,3 +1,5 @@
+# Fixes for stuff in Arch Linux running on Thinkpad T15 Gen 1
+
 ## Configure borderless windows when maximized in KDE
 
 ```
