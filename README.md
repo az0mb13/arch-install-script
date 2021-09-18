@@ -56,7 +56,7 @@ pulseaudio --start
 sudo systemctl restart bluetooth
 ```
 
-## Starting ssh-agent automatically on system boot
+## Starting ssh-agent automatically on system boot - FIX 1
 
 Create a systemd user service, by putting the following to `~/.config/systemd/user/ssh-agent.service`:
 
@@ -82,6 +82,29 @@ Enable the service, so it'll be started automatically on login, and start it:
 ```
 systemctl --user enable ssh-agent
 systemctl --user start ssh-agent
+```
+
+---
+
+## Configuring Github SSH - FIX 2
+
+Add this in the `~/.ssh/config` file:
+```
+Host github
+        HostName github.com
+        User git
+        IdentityFile ~/.ssh/github
+        AddKeysToAgent yes
+```
+Add this in the `~/.zshrc` file: 
+
+```
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
 ```
 
 ---
