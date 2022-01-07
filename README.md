@@ -138,3 +138,9 @@ vim ~/.oh-my-zsh/plugins/git/git.plugin.zsh
 ```
 sudo LD_LIBRARY_PATH=/lib/ ~/Downloads/VMware-Player-Full-16.2.1-18811642.x86_64.bundle
 ```
+
+### VMWare can not conenct to Ethernet0
+
+```
+sudo systemctl enable --now vmware-networks
+```
