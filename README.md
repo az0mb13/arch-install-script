@@ -144,3 +144,6 @@ sudo LD_LIBRARY_PATH=/lib/ ~/Downloads/VMware-Player-Full-16.2.1-18811642.x86_64
 ```
 sudo systemctl enable --now vmware-networks
 ```
+
+### Setting up trackball speed in Thinkpad
+https://www.reddit.com/r/thinkpad/comments/yev39k/anyone_know_how_to_set_pointer_speed_seperately/
