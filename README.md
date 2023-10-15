@@ -147,3 +147,7 @@ sudo systemctl enable --now vmware-networks
 
 ### Setting up trackball speed in Thinkpad
 https://www.reddit.com/r/thinkpad/comments/yev39k/anyone_know_how_to_set_pointer_speed_seperately/
+
+```
+xinput set-prop 12 360 0.7
+```
